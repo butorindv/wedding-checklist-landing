@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Свадьба без переплат и обид — чек-лист и таблица для камерной свадьбы</title>
+  <style>
+    :root {
+      --bg: #faf8f6;
+      --surface: #ffffff;
+      --accent: #c9a4a0;
+      --accent-dark: #a67f7a;
+      --text: #2d2d2d;
+      --text-muted: #5c5c5c;
+      --border: #e8e2de;
+      --max-width: 720px;
+    }
+
+  * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.25rem 1.25rem 2.5rem;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.25;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 5vw, 1.85rem);
+      margin: 0 0 1rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      margin: 2.25rem 0 1rem;
+      color: var(--text);
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin: 1.25rem 0 0.5rem;
+    }
+
+    p {
+      margin: 0 0 1rem;
+    }
+
+    .product-name {
+      color: var(--accent-dark);
+    }
+
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-bullets {
+      margin: 0 0 1.5rem;
+      padding-left: 1.25rem;
+    }
+
+    .hero-bullets li {
+      margin-bottom: 0.5rem;
+    }
+
+    .btn-pay {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 0.95rem 1.25rem;
+      border-radius: 10px;
+      background: var(--accent-dark);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .btn-pay:hover,
+    .btn-pay:focus {
+      background: #8f6a66;
+    }
+
+    .btn-soft {
+      display: block;
+      padding: 0.9rem 1.25rem;
+      border: 2px solid var(--accent-dark);
+      border-radius: 10px;
+      color: var(--accent-dark);
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .btn-soft:hover,
+    .btn-soft:focus {
+      background: var(--accent-dark);
+      color: #fff;
+    }
+
+    .btn-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 0.65rem;
+    }
+
+    section {
+      margin-bottom: 0.5rem;
+    }
+
+  .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    ul.plain {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    ul.plain li {
+      margin-bottom: 0.6rem;
+    }
+
+    .steps {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: step;
+    }
+
+    .steps li {
+      position: relative;
+      padding-left: 2.75rem;
+      margin-bottom: 1.25rem;
+      counter-increment: step;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .inside-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+  @media (min-width: 560px) {
+      .inside-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--accent-dark);
+      margin-bottom: 0.35rem;
+    }
+
+  .bonus {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+    }
+
+    .reviews-placeholder {
+      text-align: center;
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 1.5rem 1rem;
+    }
+
+    .price-box {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .price-old {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .price-new {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+      margin: 0.25rem 0 0.5rem;
+    }
+
+    .price-note {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .price-compare {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      max-width: 28em;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .faq details {
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 0;
+    }
+
+    .faq details:last-child {
+      border-bottom: none;
+    }
+
+    .faq summary {
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .faq summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq details[open] summary {
+      margin-bottom: 0.5rem;
+      color: var(--accent-dark);
+    }
+
+    .faq .answer {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin: 0;
+      padding-left: 0;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--accent-dark);
+      margin: 0 0.5rem;
+    }
+
+  footer .legal {
+      margin-top: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <!-- 1. Hero / оффер -->
+    <header class="hero" id="top">
+      <p class="tag">Камерная свадьба · 20–40 гостей</p>
+      <h1><span class="product-name">Свадьба без переплат и обид</span></h1>
+      <p class="hero-lead">
+        Подготовка к небольшой свадьбе с понятным бюджетом, договорённостями с родителями и списком дел по месяцам — в одном комплекте.
+      </p>
+      <ul class="hero-bullets">
+        <li>Бюджет камерной свадьбы с реалистичными диапазонами цен и резервом 10–15%.</li>
+        <li>Понятно, кто что оплачивает, и как обсудить это с родителями.</li>
+        <li>Готовые фразы для родни: как держать список гостей без ссор.</li>
+        <li>Чек-лист проверки предоплат и договоров до перевода денег подрядчикам.</li>
+      </ul>
+      <a class="btn-soft" href="#free">Начать бесплатно: первый месяц подготовки</a>
+      <p class="btn-note"><a href="#inside-heading">Или сразу посмотреть полный комплект</a></p>
+    </header>
+
+    <!-- 2. Боли -->
+    <section aria-labelledby="pains-heading">
+      <h2 id="pains-heading">Узнаёшь себя?</h2>
+      <div class="card">
+        <ul class="plain">
+          <li>Бюджет расползается: каждая мелочь «всего 5 000», а сумма уже другая.</li>
+          <li>Непонятно, кто что оплачивает — вы или родители — и как это обсудить.</li>
+          <li>Родственники хотят добавить гостей, а формат свадьбы рассчитан на 20–40 человек.</li>
+          <li>Предоплата подрядчику без ясных условий возврата при отмене или переносе.</li>
+          <li>Страх что-то забыть и вспомнить только на прошлой неделе перед свадьбой.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. Бесплатный первый месяц -->
+    <section id="free" aria-labelledby="free-heading">
+      <h2 id="free-heading">Начните с первого месяца — бесплатно</h2>
+      <div class="card">
+        <p>Четыре недели, после которых у вас будут дата, формат, потолок бюджета, список гостей и забронированная площадка.</p>
+        <ul class="plain">
+          <li>Неделя 1. Четыре решения до любых трат.</li>
+          <li>Неделя 2. Деньги и гости: кто участвует и на что.</li>
+          <li>Неделя 3. Площадки: что спросить до брони.</li>
+          <li>Неделя 4. Бронь: что прочитать в договоре до предоплаты.</li>
+        </ul>
+      </div>
+      <!-- TODO: ссылка на Telegram-бота с лид-магнитом -->
+      <a class="btn-soft" href="#FREE_LINK" style="margin-top: 1.25rem;">Получить первый месяц бесплатно</a>
+      <p class="btn-note">Или напишите слово «СВАДЬБА» в директ</p>
+    </section>
+
+    <!-- 4. Пример изнутри -->
+    <section aria-labelledby="sample-heading">
+      <h2 id="sample-heading">Пример из полной версии</h2>
+      <div class="card">
+        <p class="tag">Вопрос площадке до брони</p>
+        <p>«Есть ли пробковый сбор, если мы привезём свой алкоголь? Сколько за бутылку?»</p>
+        <p class="tag">Пункт договора</p>
+        <p>Что будет с предоплатой, если мы перенесём дату или отменим свадьбу? Ответ должен быть в договоре, а не в переписке.</p>
+        <p class="tag">Фраза для родни</p>
+        <p>«Мы очень хотим тебя видеть, но у нас 30 мест, и мы позвали только самых близких. Давай соберёмся отдельно после свадьбы?»</p>
+      </div>
+    </section>
+
+    <!-- 5. Как это работает -->
+    <section aria-labelledby="how-heading">
+      <h2 id="how-heading">Как это работает</h2>
+      <ol class="steps">
+        <li>
+          <strong>Начинаете с бесплатного первого месяца</strong> и понимаете, подходит ли вам формат.
+        </li>
+        <li>
+          <strong>Когда дело доходит до денег, гостей и договоров</strong>, берёте полный комплект: бюджет, «кто платит», фразы для родни, проверку договоров и план по месяцам до самой свадьбы.
+        </li>
+        <li>
+          <strong>Сводите всё в таблице:</strong> гости с ответами, дети, иногородние, расходы по плану и по факту.
+        </li>
+      </ol>
+    </section>
+
+    <!-- 6. Что внутри -->
+    <section aria-labelledby="inside-heading">
+      <h2 id="inside-heading">Что внутри</h2>
+      <div class="inside-grid">
+        <div class="card">
+          <p class="tag">PDF</p>
+          <ul class="plain">
+            <li>4 стартовых решения перед тратами.</li>
+            <li>Чек-лист подготовки по месяцам.</li>
+            <li>Чек-лист последней недели.</li>
+            <li>Кто что оплачивает и разговор с родителями.</li>
+            <li>Фразы для родственников (гости, формат, границы).</li>
+            <li>Предоплаты и договоры: что проверить до оплаты.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="tag">Google Таблица</p>
+          <ul class="plain">
+            <li>Бюджет: план и факт с резервом 10–15%.</li>
+            <li>Список гостей с RSVP.</li>
+            <li>Учёт детей, иногородних, особого питания.</li>
+            <li>Одна таблица вместо заметок в мессенджерах.</li>
+          </ul>
+        </div>
+      </div>
+      <!-- TODO: заменить на ссылку оплаты товара из личного кабинета Prodamus -->
+      <a class="btn-pay" href="#PRODAMUS_PAYMENT_LINK" style="margin-top: 1.25rem;">Купить комплект</a>
+    </section>
+
+    <!-- 7. Цена -->
+    <section aria-labelledby="price-heading">
+      <h2 id="price-heading">Цена</h2>
+      <div class="card price-box">
+        <p class="price-old">990 ₽</p>
+        <p class="price-new">499 ₽</p>
+        <p class="price-note">Цена запуска до 31 января 2027 года</p>
+        <p class="price-compare">
+          Координатор свадьбы на один день обычно стоит в разы дороже одного гайда — здесь вы получаете структуру подготовки и цифры, которые можно проходить в своём темпе.
+        </p>
+        <!-- TODO: заменить на ссылку оплаты товара из личного кабинета Prodamus -->
+        <a class="btn-pay" href="#PRODAMUS_PAYMENT_LINK">Оплатить 499 ₽</a>
+      </div>
+    </section>
+
+    <!-- 8. FAQ -->
+    <section class="faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Частые вопросы</h2>
+      <details>
+        <summary>Как я получу доступ?</summary>
+        <p class="answer">Сразу после успешной оплаты вы получите письмо со ссылкой на скачивание PDF и на копию Google Таблицы. Обычно это занимает несколько минут; проверьте папку «Спам», если письма нет.</p>
+      </details>
+      <details>
+        <summary>Подойдёт ли для свадьбы на 50+ гостей?</summary>
+        <p class="answer">Материал заточен под камерную свадьбу примерно на 20–40 гостей: бюджет, фразы для родни и список гостей. На большую свадьбу часть блоков пригодится, но расчёты и акценты могут не совпасть с вашим форматом.</p>
+      </details>
+      <details>
+        <summary>Это юридическая консультация?</summary>
+        <p class="answer">Нет. Это чек-лист с ориентирами и вопросами для себя. Договоры с подрядчиками проверяйте самостоятельно или с юристом, особенно условия возврата и отмены.</p>
+      </details>
+      <details>
+        <summary>А если не подойдёт?</summary>
+        <p class="answer">Напишите на контакт из письма после покупки и опишите ситуацию. Мы рассматриваем обращения индивидуально; условия возврата указаны в оферте.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <a href="mailto:prostyeresenia319@gmail.com">prostyeresenia319@gmail.com</a>
+    <a href="oferta.html">Оферта</a>
+    <a href="privacy.html">Политика конфиденциальности</a>
+  </footer>
+</body>
+</html>
